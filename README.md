@@ -1,3 +1,8 @@
+
+###                                                                           🔁✅**Devops Interview**✅🔁
+
+
+
 ### 🔁 Que 1) What is the difference between Continuous Integration, Continuous Delivery, and Continuous Deployment? Can you explain with an example from your past project?
 ### ✅ **Answer**
 * **Continuous Integration (CI)** is the process where developers frequently merge code changes into the main branch. This triggers automated builds and tests to ensure nothing is broken.
