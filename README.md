@@ -1,12 +1,12 @@
 ### 🔁 Que 1) What is the difference between Continuous Integration, Continuous Delivery, and Continuous Deployment? Can you explain with an example from your past project?
 ### ✅ **Answer**
-Continuous Integration (CI) is the process where developers frequently merge code changes into the main branch. This triggers automated builds and tests to ensure nothing is broken.
+**Continuous Integration (CI)** is the process where developers frequently merge code changes into the main branch. This triggers automated builds and tests to ensure nothing is broken.
 
-Continuous Delivery (CD) extends CI by making sure that the code is always in a deployable state. After passing tests, it is pushed to staging or pre-prod automatically, but manual approval is required for production.
+**Continuous Delivery (CD)** extends CI by making sure that the code is always in a deployable state. After passing tests, it is pushed to staging or pre-prod automatically, but manual approval is required for production.
 
-Continuous Deployment goes a step further — even the production deployment is automated, with no manual approval.
+**Continuous Deployment** goes a step further — even the production deployment is automated, with no manual approval.
 
-In my current company, we use GitLab CI/CD pipelines. Developers push code to feature branches, and a pipeline is triggered automatically for build, test, and deploy. We follow a multi-stage environment strategy:
+**In my current company**, we use GitLab CI/CD pipelines. Developers push code to feature branches, and a pipeline is triggered automatically for build, test, and deploy. We follow a multi-stage environment strategy:
 
 Code is deployed to Test1, then Test2 using Ansible.
 
@@ -77,49 +77,49 @@ We maintain a dynamic or static inventory file where we define:
 * Server IPs or hostnames
 * Role tags like `web`, `app`, or `db`
 
->    **Example:**
->
->    ```ini
->    [web]
->    192.168.10.5 ansible_user=ubuntu
->
->    [db]
->    192.168.10.6 ansible_user=ubuntu
->    ```
->
-> 2. **Playbooks:**
->    For each application, we create separate playbooks that define tasks like:
->
->    * Pulling code from Git repo
->    * Installing dependencies
->    * Managing Docker containers (if used)
->    * Copying environment variables
->    * Restarting services (like `nginx`, `pm2`, `node`, etc.)
->
->    **Example snippet:**
->
->    ```yaml
->    - name: Deploy web app
->      hosts: web
->      tasks:
->        - name: Clone repo
->          git:
->            repo: 'https://gitlab.com/myorg/myapp.git'
->            dest: /var/www/myapp
->        - name: Install npm packages
->          command: npm install
->          args:
->            chdir: /var/www/myapp
->    ```
->
-> 3. **Integration with GitLab CI/CD:**
->
->    * The `deploy` stage of the pipeline runs this playbook using:
->
->      ```bash
->      ansible-playbook -i inventory/staging.ini deploy.yml
->      ```
->    * We pass environment variables from GitLab to Ansible using `extra_vars`.
+ **Example:**
+ 
+ ```ini
+[web]
+192.168.10.5 ansible_user=ubuntu
+
+ [db]
+192.168.10.6 ansible_user=ubuntu
+```
+
+2. **Playbooks:**
+ For each application, we create separate playbooks that define tasks like:
+
+ * Pulling code from Git repo
+ * Installing dependencies
+ * Managing Docker containers (if used)
+ * Copying environment variables
+ * Restarting services (like `nginx`, `pm2`, `node`, etc.)
+
+ **Example snippet:**
+
+ ```yaml
+ - name: Deploy web app
+   hosts: web
+   tasks:
+     - name: Clone repo
+       git:
+         repo: 'https://gitlab.com/myorg/myapp.git'
+         dest: /var/www/myapp
+     - name: Install npm packages
+       command: npm install
+       args:
+         chdir: /var/www/myapp
+ ```
+
+ 3. **Integration with GitLab CI/CD:**
+
+ * The `deploy` stage of the pipeline runs this playbook using:
+
+   ```bash
+   ansible-playbook -i inventory/staging.ini deploy.yml
+   ```
+ * We pass environment variables from GitLab to Ansible using `extra_vars`.
 
 ---
 
@@ -129,16 +129,8 @@ We maintain a dynamic or static inventory file where we define:
 * Used **Ansible Vault** to store secrets
 * Organized roles using `ansible-galaxy init`
 * Used dynamic inventories for AWS (optional if applicable)
-
 ---
+**Kubernetes**
+### 🔁 **Que 4 **Can you explain the basic components of a Kubernetes cluster (Control Plane & Node)? Also, describe a scenario where you deployed an app on Kubernetes — how did you write your manifest or Helm chart?
 
-### ✅ You Nailed the Real-World Experience.
-
-Now let’s move to **Kubernetes**, since that’s a core topic.
-
----
-
-### 🔁 **Q4: Kubernetes**
-
-Can you explain the basic components of a Kubernetes cluster (Control Plane & Node)?
-Also, describe a scenario where you deployed an app on Kubernetes — how did you write your manifest or Helm chart?this is for study notes
+### ✅ **Answer**
