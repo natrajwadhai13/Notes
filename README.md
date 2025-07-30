@@ -1,5 +1,5 @@
-Que 1) What is the difference between Continuous Integration, Continuous Delivery, and Continuous Deployment? Can you explain with an example from your past project?
-Ans-
+### 🔁 Que 1) What is the difference between Continuous Integration, Continuous Delivery, and Continuous Deployment? Can you explain with an example from your past project?
+### ✅ **Answer**
 Continuous Integration (CI) is the process where developers frequently merge code changes into the main branch. This triggers automated builds and tests to ensure nothing is broken.
 
 Continuous Delivery (CD) extends CI by making sure that the code is always in a deployable state. After passing tests, it is pushed to staging or pre-prod automatically, but manual approval is required for production.
@@ -14,15 +14,15 @@ Once verified, we promote it to Production.
 
 This ensures smooth CI/CD flow and stable releases.
 
-Que 2) Can you explain how you have written or used a GitLab CI/CD pipeline file (.gitlab-ci.yml)? Mention any important stages, variables, or jobs used.
-Ans-
+---
+
+### 🔁 Que 2) Can you explain how you have written or used a GitLab CI/CD pipeline file (.gitlab-ci.yml)? Mention any important stages, variables, or jobs used.
+### ✅ **Answer**
 Yes, I’ve worked on writing and maintaining .gitlab-ci.yml files to automate build, test, and deployment workflows.
 
 Here's a high-level structure of what we use:
 
-yaml
-Copy
-Edit
+```yaml
 
 stages:
   - build
@@ -52,9 +52,10 @@ deploy_job:
   script:
     - ansible-playbook deploy.yml -i inventory/$DEPLOY_ENV
 
+```
 ---
 
-Que- Can you explain how Ansible is used in your pipeline for deployment?
+### 🔁 Que-3 Can you explain how Ansible is used in your pipeline for deployment?
 
 What kind of playbooks did you write or use?
 
@@ -62,27 +63,20 @@ What was being deployed — Docker containers, packages, Node apps, etc.?
 
 How was inventory handled?
 
-Ans- 
+### ✅ **Answer**
+How We Use Ansible for Deployment
 
-Great — you’ve shared the right core idea! You're clearly involved in a real-world Ansible setup, which is excellent for interview discussion.
+In my company, I manage deployment automation for more than **18+ applications** using **Ansible**.
 
-Now let’s **refine** your answer so it sounds structured, technical, and aligned with ₹20 LPA expectations:
+We follow a clear structure:
 
----
+ 1. **Inventory File:**
+We maintain a dynamic or static inventory file where we define:
 
-### ✅ **Refined Answer: How We Use Ansible for Deployment**
+* Application name as groups (e.g., `[webapp1]`, `[dbapp1]`)
+* Server IPs or hostnames
+* Role tags like `web`, `app`, or `db`
 
-> In my company, I manage deployment automation for more than **18+ applications** using **Ansible**.
->
-> We follow a clear structure:
->
-> 1. **Inventory File:**
->    We maintain a dynamic or static inventory file where we define:
->
->    * Application name as groups (e.g., `[webapp1]`, `[dbapp1]`)
->    * Server IPs or hostnames
->    * Role tags like `web`, `app`, or `db`
->
 >    **Example:**
 >
 >    ```ini
